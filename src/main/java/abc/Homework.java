@@ -5,9 +5,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.awt.image.renderable.RenderableImage;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -15,15 +15,13 @@ import static java.lang.Double.parseDouble;
 import static org.junit.Assert.assertThat;
 import static org.openqa.selenium.By.partialLinkText;
 
-public class Homework {
+public class Homework extends Utils {
 
+//    protected static WebDriver driver;
+    LoadProps props = new LoadProps();
 
-    protected static WebDriver driver;
-
-
-     @Before
-
-    public void openBrowser (){
+    @Before
+    public void openBrowser(){
 
         System.setProperty("webdriver.chrome.driver","src\\main\\Resouces\\BroserDriver\\chromedriver.exe");
 
@@ -38,14 +36,20 @@ public class Homework {
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
         //open the website
-        driver.get("https://demo.nopcommerce.com/");
+       //driver.get("https://demo.nopcommerce.com/");
+        driver.get(props.getProperty("url"));
+
+
+
 
     }
+
     @After
     public void closebrowser (){
 
          //close the browser window
-        driver.quit(); }
+        driver.quit();
+     }
 
     @Test
     public void userShouldBeAbleToLogInSuccessfully(){

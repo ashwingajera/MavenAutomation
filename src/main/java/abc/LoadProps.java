@@ -28,8 +28,5 @@ public class LoadProps {
 
     }
 
-    @Test
-    public void readPropTest() {
-        System.out.println(getProperty("url"));
-    }
+
 }
